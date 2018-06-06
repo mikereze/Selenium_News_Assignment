@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>News</title>
+
+	<style >
+
+		#NewsHeader{
+			width:50%;
+			height:7%;
+			background-color: green;
+
+		}
+		#NewsBody{
+			width:50%;
+			height:20%;
+			background-color: blue;
+		}
+		#NewsTime{
+			width:10%;
+			height:5%;
+			margin-left: 40%;
+			background-color: yellow;
+		}
+		#NewsPlace{
+			width:10%;
+			height:5%;
+			margin-left: 40%;
+			background-color: pink;
+		}
+		#news{
+			background-color: black;
+			color:white;
+			margin-top: 5%;
+			width:50%;
+			margin-left: 15%;
+		}
+	</style>
+</head>
+<body>
+	<button id="button">Click To See News of Today</button>
+	<div id="news">
+	</div>
+
+	<script>
+		var button  = document.getElementById("button");
+		var news = document.getElementById('news');
+		button.onclick = function(){
+			let httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = function(){
+                   if(httpRequest.readyState == XMLHttpRequest.DONE){
+                        if(httpRequest.status == 200){
+
+                            news.innerHTML = httpRequest.responseText;
+                           }
+                        else{
+                            news.textContent = "";
+                            }
+                        }
+
+                    }
+                
+                
+                httpRequest.open('GET', '/upload');
+                httpRequest.send();
+
+
+
+
+		}
+                
+		
+
+	</script>
+
+
+</body>
+</html>
